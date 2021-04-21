@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>feet to meter</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <form action="/" method="post" class="form">
+        <div class="card" style="width: 24rem;">
+          <div class="card-body">
+            <h5 class="card-title">Feet to Meters</h5><hr>
+            <label for="input_feet">输入：</label>
+            <input type="text" id="input_feet" name="entry_feet" value={{feet}} class="form-control"/>
+            <label>英尺</label>
+            <label >--></label>
+            <input type="text" id="output_meters" value={{meters}} class="form-control" readonly/>
+            <label >米</label>
+            <hr>
+            <button type="submit" class="btn btn-primary btn-block">转换</button>
+          </div>
+        </div>
+    </form>
+</body>
+</html>
