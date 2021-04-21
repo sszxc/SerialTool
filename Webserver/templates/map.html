@@ -70,19 +70,41 @@
             color: #fff;
         }
 
+        .form{
+            float: right;
+        }
+
     </style>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=PNvf8tFah1ORmQlw4dLKDvZUeHqpKBI1">
     </script>
 </head>
 
 <body>
-    <div class="info">GPS 数据接入百度地图 API     By Henry</div>
-    <div id="container"></div>
+    <form action="/" method="post" class="form">
+        <div class="card" style="width: 24rem;">
+            <div class="card-body">
+                <hr>
+                <label for="input_a">lat：</label>
+                <input type="text" id="input_a" name="input_lat" value={{lat}} class="form-control" />
+                <br>
+                <label for="input_o">lon：</label>
+                <input type="text" id="input_o" name="input_lon" value={{lon}} class="form-control" />
+                <hr>
+                <button type="submit" class="btn btn-primary btn-block">计算</button>
+            </div>
+        </div>
+    </form>
 
+    <div class="info">GPS 数据接入百度地图     By Henry</div>
+    
     <ul class="btn-wrap" style="z-index: 99;">
         <li class="btn" onclick="addOverlay()">加点</li>
         <li class="btn" onclick="removeOverlay()">归中</li>
     </ul>
+    
+    
+    
+    <div id="container"></div>
 
     <script type="text/javascript">
         var map = new BMap.Map("container");// 创建地图实例          
@@ -90,20 +112,11 @@
         // 使用百度地图JavaScript API服务时，需使用百度BD09坐标        
         map.centerAndZoom(point, 16); // 初始化地图，设置中心点坐标和地图级别        
         map.enableScrollWheelZoom(true); // 开启鼠标滚轮缩放
-
-        var marker1 = new BMap.Marker(new BMap.Point(121.438, 31.026));
-            // 在地图上添加点标记
         
-        var lat = 121.4383773;
-        var lon = 31.0273647;
-
         // 添加覆盖物
         function addOverlay() {
-            console.log(lat); // 写到控制台
-            map.addOverlay(new BMap.Marker(new BMap.Point(lat, lon)));
-            
-            lat += 0.001;
-            lon += 0.001;
+            // console.log({{lat}}); // 写到控制台
+            map.addOverlay(new BMap.Marker(new BMap.Point({{lat}}, {{lon}})));
         }
         // 清除覆盖物
         function removeOverlay() {
@@ -112,6 +125,12 @@
             map.panTo(new BMap.Point(121.4383773, 31.0273647));
             map.zoomTo(16);
         }
+
+        // 定时执行
+        // setInterval("PerRefresh()", 2000);
+        // function PerRefresh() {
+        //     location.reload();
+        // }
     </script>
 </body>
 
